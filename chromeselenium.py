@@ -42,9 +42,11 @@ class Farm(object):
         self.mouse.position = hunt_position
         sleep(4)
         self.mouse.click(Button.left, 1)
+        
+        self.keyboard.press('r')
+        
         for _ in range(25):
             counter += 1
-            self.keyboard.press('r')
             sleep(3)
             self.keyboard.press("q")
             sleep(6)
@@ -58,6 +60,37 @@ class Farm(object):
                 self.keyboard.press('3')
             elif counter == 16:
                 self.keyboard.press('4')
+        def respawn(self):
+            location_pos = (648, 135)
+            self.mouse.position = location_pos
+            self.mouse.click(Button.left, 1)
+            sleep(12)
+            alive_pos = (612, 311)
+            sef.mouse.position = alive_pos
+            self.mouse.click(Button.left, 1)
+            sleep(12)
+            ploshad_sveta = (1161, 275)
+            self.mouse.position = ploshad_sveta
+            self.mouse.click(Button.left, 1)
+            sleep(5)
+            kar_usipalnica = (1178, 298)
+            self.mouse.position = ploshad_sveta
+            self.mouse.click(Button.left, 1)
+            sleep(5)
+            bratskam_zaxr = (1201, 299)
+            self.mouse.position = ploshad_sveta
+            self.mouse.click(Button.left, 1)
+            sleep(60)
+            mogli_bendk = (1217, 277)
+            self.mouse.position = ploshad_sveta
+            self.mouse.click(Button.left, 1)
+            sleep(60)
+            sklep_vasalov = (1217, 277)
+            self.mouse.position = ploshad_sveta
+            self.mouse.click(Button.left, 1)
+            sleep(5)
+
+
     def zanoz(self):
         """Tu useri aikidebs Zanozs programa idaxebs am funqcias romelic chatshi itxovs zanozis Gankurnvas,
             shemdeg 200 wami elodeba vinme tu ar gankurnavs tavidan aketebs motxvonas da ase izams sanam
@@ -149,6 +182,8 @@ class Farm(object):
             self.fight()
         if r'msg="У Вас нет необходимого инструмента!"' in source_code:
             self.zanoz()
+        if r'msg="Призрак не может выполнять это действие! Для того чтобы оживить себя, посетите ближайший Храм."' in source_code:
+            self.respawn()
         self.driver.switch_to_window(self.driver.window_handles[0])
 
         self.mouse.position = (542, 44)
