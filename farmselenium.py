@@ -8,26 +8,29 @@ from pynput.mouse import Controller, Button
 from pynput import keyboard
 
 class Farm(object):
-
+    """Basic farm Class for dwar Cheat"""
     def __init__(self):
         self.zanoz_msg = 'личич заноз плиз !!'
         self.mouse = Controller()
         self.keyboard = keyboard.Controller()
-        self.instance = 'http://w1.dwar.ru/hunt_conf.php?mode=hunt_farm&area_id=155&instance_id=0'
-        self.farm_request = 'http://w1.dwar.ru/hunt_conf.php?mode=farm&action=chek&xy=0&sig=f20b74978cd88fb679656725cfa09e7b&num={}&t=1' 
+        self.instance = 'http://w1.dwar.ru/hunt_conf.php?mode=hunt_farm&area_id=154&instance_id=0' # Instance url where to farm resources
+        self.farm_request = 'http://w1.dwar.ru/hunt_conf.php?mode=farm&action=chek&xy=0&sig=f20b74978cd88fb679656725cfa09e7b&num={}&t=1' # i think this field requiere User Token, it must be change for various usrers
         self.nums = []
-        self.dwar_url = 'http://w1.dwar.ru'
+        self.dwar_url = 'http://w1.dwar.ru' 
         self.driver = webdriver.Firefox()
         self.login()
         self.execute()
 
 
     def login(self):
+        'This function simply calls webbrowser and get dwar url Than sleep 100 seconds to give user time for authentication'
         self.driver.get(self.dwar_url)
         # We have 100 second for authentication
     
         sleep(100)
     def fight(self):
+        """Programa am funqcias idzaxebs im shemtxvevashi tu Users-s yvalvilebis
+        grovebis dro Mobi daesxmeva Tavs"""
         counter = 0 
         first_tab = (184, 79)
         self.mouse.position = first_tab
@@ -38,17 +41,23 @@ class Farm(object):
         self.mouse.position = hunt_position
         sleep(4)
         self.mouse.click(Button.left, 1)
-        for _ in range(9):
+        self.keyboard.press('5')
+        for _ in range(17):
             counter += 1
             self.keyboard.press("q")
             sleep(4)
-            if counter == 2:
+            if counter == 3:
                 self.keyboard.press('1')
-            elif counter == 5:
+            elif counter == 7:
                 self.keyboard.press('2')
+            elif counter == 11:
+                self.keyboard.press('3')
+            elif counter == 14:
+                self.keyboard.press('4')
     def zanoz(self):
-        # mouse = Controller()
-        # keyboard = keyboard.Controller()
+        """Tu useri aikidebs Zanozs programa idaxebs am funqcias romelic chatshi itxovs zanozis Gankurnvas,
+            shemdeg 200 wami elodeba vinme tu ar gankurnavs tavidan aketebs motxvonas da ase izams sanam
+            romelime motamashe ar zanoz-s ar mogxsnis"""
         sleep(3)
         first_tab = (224, 77)
         self.mouse.position = first_tab
@@ -100,6 +109,8 @@ class Farm(object):
         sleep(9)
 
     def parse(self):
+        """Suli da guli methodi Mteli sofits 
+        romelic parasavs Instac-s resursis Num-ebs da amatebs list-shi"""
         self.nums.clear()
         req = requests.get(self.instance)
         with open('data.xml', 'w') as e:
@@ -110,12 +121,12 @@ class Farm(object):
         
         for item in root.findall('farm'):
             for child in item:
-                if child.attrib['name'] == "Тысячелистник" or child.attrib['name'] == "Розмарин":
+                if child.attrib['name'] == "Мандрагора" or child.attrib['name'] == "Анемонин":
                     
                     self.nums.append(child.attrib['num'])
 
     def pick(self): # IT worksssssss !!!
-
+        # Wavedii Boti Cheteroba da ase shemdg :))))))
         sleep(1)
         choice = random.choice(self.nums)
         self.driver.execute_script(f'''window.open("{self.farm_request.format(choice)}","_blank");''')
