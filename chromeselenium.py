@@ -12,7 +12,7 @@ class Farm(object):
     def __init__(self):
         self.zanoz_msg = 'личич заноз плиз !!'
         self.mouse = Controller()
-        self.path = '/home/imerla/downloads/chromedriver_linux64/chromedriver'
+        self.path = '/home/imerla/Desktop/ch/chromedriver'
         self.keyboard = keyboard.Controller()
         self.instance = 'http://w1.dwar.ru/hunt_conf.php?mode=hunt_farm&area_id=154&instance_id=0' # Instance url where to farm resources
         self.farm_request = 'http://w1.dwar.ru/hunt_conf.php?mode=farm&action=chek&xy=0&sig=f20b74978cd88fb679656725cfa09e7b&num={}&t=1' # i think this field requiere User Token, it must be change for various usrers
@@ -61,12 +61,17 @@ class Farm(object):
             elif counter == 16:
                 self.keyboard.press('4')
         def respawn(self):
+            sleep(2)
+            first_tab = (252, 45)
+            self.mouse.position = first_tab
+            self.mouse.click(Button.left, 1)
+            sleep(2)
             location_pos = (648, 135)
             self.mouse.position = location_pos
             self.mouse.click(Button.left, 1)
             sleep(12)
             alive_pos = (612, 311)
-            sef.mouse.position = alive_pos
+            self.mouse.position = alive_pos
             self.mouse.click(Button.left, 1)
             sleep(12)
             ploshad_sveta = (1161, 275)
