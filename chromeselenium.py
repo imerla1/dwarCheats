@@ -60,41 +60,40 @@ class Farm(object):
                 self.keyboard.press('3')
             elif counter == 16:
                 self.keyboard.press('4')
-        def respawn(self):
-            sleep(2)
-            first_tab = (252, 45)
-            self.mouse.position = first_tab
-            self.mouse.click(Button.left, 1)
-            sleep(2)
-            location_pos = (648, 135)
-            self.mouse.position = location_pos
-            self.mouse.click(Button.left, 1)
-            sleep(12)
-            alive_pos = (612, 311)
-            self.mouse.position = alive_pos
-            self.mouse.click(Button.left, 1)
-            sleep(12)
-            ploshad_sveta = (1161, 275)
-            self.mouse.position = ploshad_sveta
-            self.mouse.click(Button.left, 1)
-            sleep(5)
-            kar_usipalnica = (1178, 298)
-            self.mouse.position = ploshad_sveta
-            self.mouse.click(Button.left, 1)
-            sleep(5)
-            bratskam_zaxr = (1201, 299)
-            self.mouse.position = ploshad_sveta
-            self.mouse.click(Button.left, 1)
-            sleep(60)
-            mogli_bendk = (1217, 277)
-            self.mouse.position = ploshad_sveta
-            self.mouse.click(Button.left, 1)
-            sleep(60)
-            sklep_vasalov = (1217, 277)
-            self.mouse.position = ploshad_sveta
-            self.mouse.click(Button.left, 1)
-            sleep(5)
-
+    def resawn(self):
+        sleep(2)
+        first_tab = (252, 45)
+        self.mouse.position = first_tab
+        self.mouse.click(Button.left, 1)
+        sleep(2)
+        location_pos = (648, 135)
+        self.mouse.position = location_pos
+        self.mouse.click(Button.left, 1)
+        sleep(12)
+        alive_pos = (612, 311)
+        self.mouse.position = alive_pos
+        self.mouse.click(Button.left, 1)
+        sleep(12)
+        ploshad_sveta = (1161, 275)
+        self.mouse.position = ploshad_sveta
+        self.mouse.click(Button.left, 1)
+        sleep(5)
+        kar_usipalnica = (1178, 298)
+        self.mouse.position = ploshad_sveta
+        self.mouse.click(Button.left, 1)
+        sleep(5)
+        bratskam_zaxr = (1201, 299)
+        self.mouse.position = ploshad_sveta
+        self.mouse.click(Button.left, 1)
+        sleep(60)
+        mogli_bendk = (1217, 277)
+        self.mouse.position = ploshad_sveta
+        self.mouse.click(Button.left, 1)
+        sleep(60)
+        sklep_vasalov = (1217, 277)
+        self.mouse.position = ploshad_sveta
+        self.mouse.click(Button.left, 1)
+        sleep(5)
 
     def zanoz(self):
         """Tu useri aikidebs Zanozs programa idaxebs am funqcias romelic chatshi itxovs zanozis Gankurnvas,
