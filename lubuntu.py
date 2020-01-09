@@ -13,7 +13,7 @@ class Farm(object):
         self.zanoz_msg = 'личич заноз плиз !!'
         self.mouse = Controller()
         self.keyboard = keyboard.Controller()
-        self.instance = 'http://w1.dwar.ru/hunt_conf.php?mode=hunt_farm&area_id=154&instance_id=0' # Instance url where to farm resources
+        self.instance = 'http://w1.dwar.ru/hunt_conf.php?mode=hunt_farm&area_id=156&instance_id=0' # Instance url where to farm resources
         self.farm_request = 'http://w1.dwar.ru/hunt_conf.php?mode=farm&action=chek&xy=0&sig=f20b74978cd88fb679656725cfa09e7b&num={}&t=1' # i think this field requiere User Token, it must be change for various usrers
         self.nums = []
         self.dwar_url = 'http://w1.dwar.ru' 
@@ -125,7 +125,7 @@ class Farm(object):
         
         for item in root.findall('farm'):
             for child in item:
-                if child.attrib['name'] == "Мандрагора" or child.attrib['name'] == "Анемонин":
+                if child.attrib['name'] == "Клевер":
                     
                     self.nums.append(child.attrib['num'])
 
@@ -142,7 +142,7 @@ class Farm(object):
         source_code = self.driver.page_source
         
         if 'first_farmer="1"' in source_code:
-            sleep(60)
+            sleep(20)
             print("Farm finished Finished")
         
         if r'msg="Вы находитесь в бою!"' in source_code:
